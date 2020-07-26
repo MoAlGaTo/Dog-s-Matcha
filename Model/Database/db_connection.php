@@ -2,7 +2,7 @@
 
 function db_connection()
 {
-    $dsn = 'mysql:dbname=matcha;host=127.0.0.1';
+    $dsn = 'mysql:dbname=Dogs_Matcha;host=127.0.0.1';
     $user = 'root';
     $password = 'mohamedali';
     try {

@@ -14,9 +14,9 @@
         {% for profile in profiles_visited %}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ profile.profile_picture_path }}">
+                    <img class="card-img-top" src="{{ profile.profile_picture_path }}" style="height: 300px">
                     <div class="card-body text-center">
-                        <h5 class="card-title">{{ profile.firstname ~ ' ' ~ profile.lastname }}</h5>
+                        <h5 class="card-title">{{ profile.dog_name }}</h5>
                         <a href="online.php?page=show_profil&id={{ profile.id_user }}" class="btn btn-primary ">Voir le profil</a>
                     </div>
                 </div>

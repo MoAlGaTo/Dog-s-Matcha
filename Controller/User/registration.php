@@ -88,9 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 {
                     if (send_email_registration($email, $key_mail, $username))
                     {
-                        $_SESSION['success_message'] =  "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><h4 class=\"success-message\">Votre inscription a bien été prise en compte</h4><hr/>Un e-mail de confirmation vous a été envoyé. Avant de pouvoir accéder à votre compte Matcha, veuillez valider votre adresse e-mail. Pensez à vérifier dans vos courrier indésirable.</div>";
+                        $_SESSION['success_message'] =  "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><h4 class=\"success-message\">Votre inscription a bien été prise en compte</h4><hr/>Un e-mail de confirmation vous a été envoyé. Avant de pouvoir accéder à votre compte Dog's Matcha, veuillez valider votre adresse e-mail. Pensez à vérifier dans vos courrier indésirable.</div>";
 
-                        header('location: http://localhost:8080/Matcha/index.php?page=home');
+                        header('location: http://localhost:8080/Dog-s-Matcha/index.php?page=home');
                         exit;
 
                     }

@@ -13,7 +13,7 @@ session_destroy();
 
 if (session_status() === PHP_SESSION_NONE)
 {
-    header("location: /Matcha/index.php");
+    header("location: /Dog-s-Matcha/index.php");
     exit;
 }
 else

@@ -8,16 +8,16 @@ $bdd = db_connection();
 
 
 /********************************** creation de la base de donées matcha **********************************/
-$table_drop = "DROP DATABASE IF EXISTS matcha";
-$base = "CREATE DATABASE IF NOT EXISTS matcha CHARACTER SET 'utf8' COLLATE = utf8_general_ci";
+$table_drop = "DROP DATABASE IF EXISTS Dogs_Matcha";
+$base = "CREATE DATABASE IF NOT EXISTS Dogs_Matcha CHARACTER SET 'utf8' COLLATE = utf8_general_ci";
 try 
 {
-    $bdd->prepare("USE matcha;")->execute();
+    $bdd->prepare("USE Dogs_Matcha;")->execute();
     $bdd->prepare($base)->execute();
 }
 catch (PDOException $ex)
 {
-    echo "La base de données matcha n'a pas pu être créér. ".$ex->getMessage()."<br/>";
+    echo "La base de données Dogs_Matcha n'a pas pu être créér. ".$ex->getMessage()."<br/>";
 }
 
 

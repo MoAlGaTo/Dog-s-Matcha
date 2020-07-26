@@ -11,7 +11,7 @@
         {% for matched_profil in matched_profils %}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ matched_profil.profile_picture_path }}">
+                    <img class="card-img-top" src="{{ matched_profil.profile_picture_path }}" style="height: 300px;">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ matched_profil.firstname ~ ' ' ~ matched_profil.lastname }}</h5>
                         <p class="card-text">{{ matched_profil.biography|length > 50 ? matched_profil.biography|slice(0, 50) ~ '...' : myentity.text  }}</p>

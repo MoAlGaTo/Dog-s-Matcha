@@ -6,7 +6,7 @@ function remove_notifications() {
     .then(function (response) {
       if (response.data.response !== false) {
         if (response.data.response) {
-            document.location.href="http://localhost:8080/Matcha/online.php?page=notifications";
+            document.location.href="http://localhost:8080/Dog-s-Matcha/online.php?page=notifications";
         }
       }
     })

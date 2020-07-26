@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Matcha/Model/Database/db_connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Dog-s-Matcha/Model/Database/db_connection.php');
 
 
 function get_sorted_admins($orientation, $gender, $tag, $tag2, $tag3, $id_user, $latitude, $longitude, $breed)
@@ -458,7 +458,7 @@ function get_id_visits($id_visitor)
 {
     $bdd = db_connection();
     
-    $statement = $bdd->prepare("SELECT id_user,firstname,lastname, profile_picture_path, visits.id_visit FROM users INNER JOIN visits ON users.id_user = visits.id_visited WHERE visits.id_visitor = :id_visitor AND users.id_user != :id_visitor AND users.id_user NOT IN (SELECT black_list.id_blocked FROM black_list WHERE black_list.id_blocker = :id_visitor) ORDER BY visits.id_visit DESC");
+    $statement = $bdd->prepare("SELECT id_user, dog_name, profile_picture_path, visits.id_visit FROM users INNER JOIN visits ON users.id_user = visits.id_visited WHERE visits.id_visitor = :id_visitor AND users.id_user != :id_visitor AND users.id_user NOT IN (SELECT black_list.id_blocked FROM black_list WHERE black_list.id_blocker = :id_visitor) ORDER BY visits.id_visit DESC");
     $statement->bindValue(':id_visitor', $id_visitor, PDO::PARAM_INT);
     $statement->execute();
     $result = $statement->fetchAll();
@@ -512,8 +512,8 @@ function send_email_reporting_account($id_reporter, $id_reported)
                 <p>
                 Le compte ayant l\'id  "'.$id_reported.'" a été signalé par l\'utilisateur ayant l\'id "' .$id_reporter.'" comme étant un compte faux.
 
-                Cet e-mail est généré automatiquement par l\'equipe admin de Matcha ©. Merci de ne pas y répondre.<br/><br/>
-                L\'équipe admin Matcha ©.
+                Cet e-mail est généré automatiquement par l\'equipe admin de Dog\'s Matcha ©. Merci de ne pas y répondre.<br/><br/>
+                L\'équipe admin Dog\'s Matcha ©.
                 </p>
             </body>
         </html>';

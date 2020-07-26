@@ -29,7 +29,7 @@ function like_dislike() {
             like.src = 'Public/Images/love_black.png';
             like.onmouseout = function() { this.src= 'Public/Images/love_black.png'; } ;
             add_notification(like.name, 4, 0);
-            document.location.href="http://localhost:8080/Matcha/online.php?page=match";
+            document.location.href="http://localhost:8080/Dog-s-Matcha/online.php?page=match";
           }
         }
       })

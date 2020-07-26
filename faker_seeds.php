@@ -187,7 +187,7 @@ array(
 
 
 
-for($i = 0; $i < 15 ; $i++)
+for($i = 0; $i < 1/*15*/ ; $i++)
 {
     foreach($dogsBreed as $dogsBreedEn => $dogsBreedFr)
     {
@@ -196,7 +196,7 @@ for($i = 0; $i < 15 ; $i++)
         $orientation = $orientations[mt_rand(0, 2)];
         $firstname = $faker->firstName;
 
-        if ($dogs_name_count > sizeof($dogs_name)) $dogs_name_count = 0;
+        if ($dogs_name_count >= sizeof($dogs_name)) $dogs_name_count = 0;
         $dog_name = $dogs_name[$dogs_name_count];
         $dogs_name_count++;
 
@@ -268,9 +268,10 @@ for($i = 0; $i < 15 ; $i++)
         }
     
     
+        // Insertion des likes
         $like_number = $likes_array[mt_rand(0, 3)];
         
-        for ($like_count = 0; $like_count < $likes_array[$likes_array]; $like_count++)
+        for ($like_count = 0; $like_count < $like_number; $like_count++)
         {
             $id_liker = mt_rand(1, 751);
             if ($id_liker === $id_user) $id_liker += 1;

@@ -55,14 +55,14 @@ function send_email_registration($email, $key_mail, $username)
 {
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-type: text/html; charset=utf8';
-    $mail_subject = "Confirmation de votre compte Matcha";
+    $mail_subject = "Confirmation de votre compte Dog's Matcha";
     $mail_confirm_message = '
         <html>
             <body>
                 <p>
-                Bienvenue ' . $username . ' ! Vous venez de vous inscrire sur Matcha, et nous vous en remercions. Pour confirmer votre compte, et pouvoir ainsi accéder à votre espace personnel, veuillez cliquer sur lien ci-dessous:<br/><br/><a href="http://localhost:8080/Matcha/index.php?page=login&amp;username=' . urlencode($username) . '&amp;key=' . urlencode($key_mail) . '">Cliquez sur ce lien pour confirmer votre compte.</a><br/><br/>
+                Bienvenue ' . $username . ' ! Vous venez de vous inscrire sur Dog\'s Matcha, et nous vous en remercions. Pour confirmer votre compte, et pouvoir ainsi accéder à votre espace personnel, veuillez cliquer sur lien ci-dessous:<br/><br/><a href="http://localhost:8080/Dog-s-Matcha/index.php?page=login&amp;username=' . urlencode($username) . '&amp;key=' . urlencode($key_mail) . '">Cliquez sur ce lien pour confirmer votre compte.</a><br/><br/>
                 Cet e-mail est généré automatiquement. Merci de ne pas y répondre.<br/><br/>
-                L\'équipe Matcha ©.
+                L\'équipe Dog\'s Matcha ©.
                 </p>
             </body>
         </html>';
@@ -142,14 +142,14 @@ function forgotten_password($email)
     {
         $headers[] = 'MIME-Version: 1.0';
         $headers[] = 'Content-type: text/html; charset=utf8';
-        $mail_subject = "Réinitialisation de votre mot de passe Matcha";
+        $mail_subject = "Réinitialisation de votre mot de passe Dog's Matcha";
         $mail_confirm_message = '
             <html>
                 <body>
                     <p>
-                    Bonjour ! Voici le lien pour réinitialiser le mot de passe de votre compte Matcha:<br/><br/><a href="http://localhost:8080/Matcha/index.php?page=reset_password&amp;key=' . urlencode($key_password_reset) . '">Cliquez sur ce lien pour réinitialiser votre mot de passe.</a><br/><br/>
+                    Bonjour ! Voici le lien pour réinitialiser le mot de passe de votre compte Dog\'s Matcha:<br/><br/><a href="http://localhost:8080/Dog-s-Matcha/index.php?page=reset_password&amp;key=' . urlencode($key_password_reset) . '">Cliquez sur ce lien pour réinitialiser votre mot de passe.</a><br/><br/>
                     Cet e-mail est généré automatiquement. Merci de ne pas y répondre.<br/><br/>
-                    L\'équipe Matcha ©.
+                    L\'équipe Dog\'s Matcha ©.
                     </p>
                 </body>
             </html>';

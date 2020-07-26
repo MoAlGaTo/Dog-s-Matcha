@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Matcha/Model/admins.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Dog-s-Matcha/Model/admins.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {

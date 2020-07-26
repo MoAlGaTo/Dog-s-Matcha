@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
                             $_SESSION['success_message'] =  "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>Votre mot de passe a bien été mis à jour.</div>";
 
-                            header('location: http://localhost:8080/Matcha/online.php?page=user_profil');
+                            header('location: http://localhost:8080/Dog-s-Matcha/online.php?page=user_profil');
                             exit;
                         }
                         else

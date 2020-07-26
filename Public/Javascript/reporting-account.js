@@ -9,7 +9,7 @@ function reporting_account() {
     .then(function (response) {
       if (response.data.response !== false) {
         if (response.data.response) {
-            document.location.href="http://localhost:8080/Matcha/online.php";
+            document.location.href="http://localhost:8080/Dog-s-Matcha/online.php";
         }
       }
     })

@@ -51,14 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 {
                     $_SESSION['failure_message'] = "<div class=\"alert alert-danger alert-dismissible fade show\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>La modification de votre mot de passe n'a pas pu être prise en compte. Ce lien a déjà été utilisé, ou n'a pas fonctionné. Veuillez réessayer avec le lien qui vous a déjà été envoyé.</div>";
 
-                    header('location: http://localhost:8080/Matcha/index.php?page=login');
+                    header('location: http://localhost:8080/Dog-s-Matcha/index.php?page=login');
                     exit;
                 }
                 else if ($response || !$response)
                 {
                     $_SESSION['success_message'] = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><h4 class=\"success-message\">Votre mot de passe a bien été mis a jour</h4><hr/>Vous pouvez désormais vous connectez à votre compte.</div>";
 
-                    header('location: http://localhost:8080/Matcha/index.php?page=login');
+                    header('location: http://localhost:8080/Dog-s-Matcha/index.php?page=login');
                     exit;
                 }
             }

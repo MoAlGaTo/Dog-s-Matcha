@@ -15,7 +15,6 @@
             {% endif %}
             <img src="{{ profil.profile_picture_path }}" width="300">
             <h1 class="display-4" style="margin-top: 10px;">{{ profil.dog_name }}</h1>
-            {# <h1 class="display-4" style="margin-top: 10px;">{{ profil.firstname ~ ' ' ~ profil.lastname }}</h1> #}
 
 
             <div class="d-flex justify-content-center mb-3">
@@ -58,7 +57,7 @@
                     
                     <p><span class="titlle-pre">Localisation:</span> {{ profil.city ~ ' - ' ~ profil.zipcode  ~ ', France.' }}</p>
                     
-                    <p><span class="titlle-pre">Présentation:</span> {{ profil.biography ~ '.' }}</p>
+                    <p><span class="titlle-pre">Présentation:</span> {{ profil.biography }}</p>
                     
                     <p><span class="titlle-pre">Nom d'utilisateur du maître:</span> {{ profil.username }}</p>
                     
@@ -70,7 +69,7 @@
                     
                     
                     <div style="margin-top: 30px; margin-bottom: 30px"><button class="btn btn-link report" data-toggle="modal" data-target="#reporting">Signaler ce compte comme étant un faux</button>
-                        <small style="margin: 0;" class="form-text alert-small-message text-center">Un email sera envoyé a l'équipe admin de Matcha et le compte sera verifié.</small></div>
+                        <small style="margin: 0;" class="form-text alert-small-message text-center">Un email sera envoyé a l'équipe admin de Dog's Matcha et le compte sera verifié.</small></div>
                         
                         <div class="modal fade" id="reporting" tabindex="-1" role="dialog" aria-labelledby="reportingTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">

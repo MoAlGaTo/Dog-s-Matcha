@@ -9,7 +9,7 @@ function remove_all_chat_messages() {
   .then(function (response) {
     if (response.data.success !== false) {
       if (response.data.response) {
-        document.location.href="http://localhost:8080/Matcha/online.php?page=show_matched_profil&id=" + like.name;
+        document.location.href="http://localhost:8080/Dog-s-Matcha/online.php?page=show_matched_profil&id=" + like.name;
       }
     }
   })

@@ -1,19 +1,14 @@
 <?php
 
-$dogs_name = array(
-    array('1' => 'kdhfv', '2' => 'momo'),
-    array('1' => 'kdhfv', '2' => 'momo'),
-    array('1' => 'kdhfv', '2' => 'momo'),
-    array('1' => 'kdhfv', '2' => 'momo'),
-    array('1' => 'kdhfv', '2' => 'momo'),
-    array('1' => 'kdhfv', '2' => 'momo'),
-    array('1' => 'kdhfv', '2' => 'momo'),
+$dogs_name = array('1' => 'kdhfv', '2' => 'momo'
 );
 
-$new = array_column($dogs_name, '2');
 
-echo '<pre>';
-print_r(array_unique($new));
-echo '</pre>';
+$i = 0;
+for ($oo = 0; $oo < sizeof($dogs_name); $oo++) {
+    $i++;
+}
+
+echo $i.'<br/>'.sizeof($dogs_name);
 
 ?>

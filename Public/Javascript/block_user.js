@@ -8,7 +8,7 @@ blockButton.addEventListener('click', function () {
       .then(function (response) {
         if (response.data.success !== false) {
           if (response.data.success) {
-              document.location.href="http://localhost:8080/Matcha/online.php";
+              document.location.href="http://localhost:8080/Dog-s-Matcha/online.php";
           }
         }
       })

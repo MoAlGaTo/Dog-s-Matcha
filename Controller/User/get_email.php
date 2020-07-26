@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 {
                     $_SESSION['success_message'] =  "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>Un email de réinitialisation de votre mot de passe vient de vous être envoyé. Pensez à vérifier dans vos courrier indésirable.</div>";
 
-                    header('location: http://localhost:8080/Matcha/index.php?page=get_email');
+                    header('location: http://localhost:8080/Dog-s-Matcha/index.php?page=get_email');
                     exit;
                 }
                 else

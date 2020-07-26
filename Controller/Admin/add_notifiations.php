@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/Matcha/Model/admins.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/Dog-s-Matcha/Model/admins.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
@@ -16,11 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $notification_number = htmlspecialchars($data['notification_number']);
     $status = htmlspecialchars($data['status']);
     $typeof_notifications = array(
-        0 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['username'].'</a> vous a liké',
-        1 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['username'].'</a> a visité votre profil',
-        2 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['username'].'</a> vous a envoyé un message',
-        3 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['username'].'</a> vous a aussi liké, vous avez matché et vous pouvez désormais chatter ensemble - ',
-        4 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['username'].'</a> ne vous like plus, vous ne pouvais plus chatter ensemble - '
+        0 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a liké',
+        1 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> a visité votre profil',
+        2 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a envoyé un message',
+        3 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a aussi liké, vous avez matché et vous pouvez désormais chatter ensemble - ',
+        4 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> ne vous like plus, vous ne pouvais plus chatter ensemble - '
     );
 
 

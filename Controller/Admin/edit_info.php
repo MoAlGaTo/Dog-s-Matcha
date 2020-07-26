@@ -317,7 +317,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                             $_SESSION['profile_picture_path'] = $picture_destination;
 
 
-                            header('location: http://localhost:8080/Matcha/online.php?page=user_profil');
+                            header('location: http://localhost:8080/Dog-s-Matcha/online.php?page=user_profil');
                             exit;
                         }
                     }

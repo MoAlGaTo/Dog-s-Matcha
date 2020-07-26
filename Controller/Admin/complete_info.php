@@ -226,7 +226,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     $_SESSION['profile_picture_path'] = $picture_destination;
                     $_SESSION['gender'] = $gender;
                     $_SESSION['orientation'] = $orientation;
+                    $_SESSION['dog_name'] = $dog_name;
                     $_SESSION['age'] = $age;
+                    $_SESSION['breed'] = $breed;
                     $_SESSION['address'] = $address;
                     $_SESSION['city'] = $city;
                     $_SESSION['country'] = $state;
