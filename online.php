@@ -176,6 +176,7 @@ if ($page === 'home' || $page == null) {
     
     echo $twig->render('show_profil.html.twig', [
         'profil' => $profil,
+        'breed' => $dogs_breed[$profil['breed']],
         'hashtags' => $hashtags,
         'likes' => $likes,
         'already_liked' => $already_liked,
@@ -351,27 +352,27 @@ if ($page === 'home' || $page == null) {
 
 } else if ($page === 'notifications') {
 
-    $notifications = get_all_notifications($_SESSION['id_user']);
+    // $notifications = get_all_notifications($_SESSION['id_user']);
     
 
-    $model = "/a visité votre profil/";
-    $size = sizeof($notifications);
+    // $model = "/a visité votre profil/";
+    // $size = sizeof($notifications);
     
     
-    for ($i = 0; $i < $size - 1; $i++)
-    {
-        if (preg_match($model, $notifications[$i]['notification']) && preg_match($model, $notifications[$i + 1]['notification']) && return_without_second($notifications[$i]['notification_date']) === return_without_second($notifications[$i + 1]['notification_date']))
-        {
-            remove_duplicate_notifications($notifications[$i]['id_notification']);
-        }
-    }
+    // for ($i = 0; $i < $size - 1; $i++)
+    // {
+    //     if (preg_match($model, $notifications[$i]['notification']) && preg_match($model, $notifications[$i + 1]['notification']) && return_only_date($notifications[$i]['notification_date']) === return_only_date($notifications[$i + 1]['notification_date']))
+    //     {
+    //         remove_duplicate_notifications($notifications[$i]['id_notification']);
+    //     }
+    // }
     
     $notifications = get_all_notifications($_SESSION['id_user']);
     set_notifications_readed($_SESSION['id_user']);
 
     $current_page_selected = 'notifications';
 
-    echo $twig->render('notificatons.html.twig', [
+    echo $twig->render('notifications.html.twig', [
         'notifications' => $notifications,
         'current_page_selected' => $current_page_selected,
         'unreads_notifications' => 0
@@ -387,6 +388,7 @@ if ($page === 'home' || $page == null) {
         'current_page_selected' => $current_page_selected,
         'unreads_notifications' => $unreads_notifications
     ]);
+    
 } else if ($page === 'show_matched_profil' && !empty($_GET['id'])) {
     $id_profil = htmlspecialchars($_GET['id']);
 
@@ -423,6 +425,7 @@ if ($page === 'home' || $page == null) {
 
     echo $twig->render('show_matched_profil.html.twig', [
         'profil' => $profil,
+        'breed' => $dogs_breed[$profil['breed']],
         'hashtags' => $hashtags,
         'likes' => $likes,
         'already_liked' => $already_liked,

@@ -10,7 +10,7 @@ function get_sorted_admins($orientation, $gender, $tag, $tag2, $tag3, $id_user, 
     if ($orientation == 'other_breed')
     {
 
-        $req = $bdd->prepare("SELECT *, SQRT( POW(69.1 * (latitude - ? ), 2) + POW(69.1 * ( ? - longitude) * COS(latitude / 57.3), 2)) AS distance FROM users WHERE active_account = 2 AND id_user != ? AND gender != ? AND breed != ? AND
+        $req = $bdd->prepare("SELECT *, SQRT( POW(69.1 * (latitude - ? ), 2) + POW(69.1 * ( ? - longitude) * COS(latitude / 57.3), 2)) AS distance FROM users WHERE active_account = 2 AND id_user != ? AND gender != ? AND breed != ? AND orientation != 'same_breed' AND
         users.id_user IN (SELECT id_user FROM tags WHERE tag = ? OR tag = ? OR tag = ?) AND 
         users.id_user NOT IN (SELECT id_blocked FROM black_list WHERE id_blocker = ?) ORDER BY distance");
         $req->execute(array($latitude, $longitude, $id_user, $gender, $breed, $tag, $tag2, $tag3, $id_user));
@@ -19,7 +19,7 @@ function get_sorted_admins($orientation, $gender, $tag, $tag2, $tag3, $id_user, 
     }
     else if ($orientation == 'same_breed')
     {
-        $req = $bdd->prepare("SELECT *, SQRT( POW(69.1 * (latitude - ? ), 2) + POW(69.1 * ( ? - longitude) * COS(latitude / 57.3), 2)) AS distance FROM users WHERE active_account = 2 AND id_user != ? AND gender != ? AND breed = ? AND
+        $req = $bdd->prepare("SELECT *, SQRT( POW(69.1 * (latitude - ? ), 2) + POW(69.1 * ( ? - longitude) * COS(latitude / 57.3), 2)) AS distance FROM users WHERE active_account = 2 AND id_user != ? AND gender != ? AND breed = ? AND orientation != 'other_breed' AND
         users.id_user IN (SELECT id_user FROM tags WHERE tag = ? OR tag = ? OR tag = ?) AND 
         users.id_user NOT IN (SELECT id_blocked FROM black_list WHERE id_blocker = ?) ORDER BY distance");
         $req->execute(array($latitude, $longitude, $id_user, $gender, $breed, $tag, $tag2, $tag3, $id_user));
@@ -29,9 +29,10 @@ function get_sorted_admins($orientation, $gender, $tag, $tag2, $tag3, $id_user, 
     else if ($orientation == 'all_breed')
     {
         $req = $bdd->prepare("SELECT *, SQRT( POW(69.1 * (latitude - ? ), 2) + POW(69.1 * ( ? - longitude) * COS(latitude / 57.3), 2)) AS distance FROM users WHERE active_account = 2 AND id_user != ? AND gender != ? AND 
+        (breed != ? AND orientation != 'same_breed' OR breed = ? AND orientation != 'other_breed') AND
         users.id_user IN (SELECT id_user FROM tags WHERE tag = ? OR tag = ? OR tag = ?) AND
         users.id_user NOT IN (SELECT id_blocked FROM black_list WHERE id_blocker = ?) ORDER BY distance");
-        $req->execute(array($latitude, $longitude, $id_user, $gender, $tag, $tag2, $tag3, $id_user));
+        $req->execute(array($latitude, $longitude, $id_user, $gender, $breed, $breed, $tag, $tag2, $tag3, $id_user));
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
@@ -539,6 +540,38 @@ function add_notification($id_notificater, $id_notificated, $notification, $stat
         $statement->bindValue(':notification', $notification, PDO::PARAM_STR);
         $statement->bindValue(':status', $status, PDO::PARAM_INT);
         $statement->execute();
+
+        if ($statement->rowCount())
+        {
+            $statement = $bdd->prepare("SELECT * FROM notifications WHERE id_notificater = :id_notificater  AND id_notificated = :id_notificated AND notification ~* '%a visité votre profil' ORDER BY id_notification DESC");
+            $statement->bindValue(':id_notificater', $id_notificater, PDO::PARAM_INT);
+            $statement->bindValue(':id_notificated', $id_notificated, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            if (isset($result[0]) && return_only_date($result[0]['notification_date']) === date('y-m-j'))
+                remove_duplicate_notifications($result[0]['id_notification']);
+        }
+        // $notifications = get_all_notifications($id_notificated);
+
+        // $model = "/a visité votre profil/";
+        // $size = sizeof($notifications);
+        
+        
+        // for ($i = 0; $i < $size; $i++)
+        // {
+        //     if ($notifications[$i + 1]['notification'] &&
+        //         preg_match($model, $notifications[$i]['notification']) &&
+        //         preg_match($model, $notifications[$i + 1]['notification']) &&
+        //         $notifications[$i]['id_notificater'] === $notifications[$i + 1]['id_notificater'] &&
+        //         return_only_date($notifications[$i]['notification_date']) === return_only_date($notifications[$i + 1]['notification_date'])
+        //     )
+        //     {
+        //         remove_duplicate_notifications($notifications[$i]['id_notification']);
+        //     }
+        // }
+
+
         return $statement->rowCount();
     }
     else
@@ -660,7 +693,7 @@ function is_matcher_or_matched($id_matcher, $id_matched)
     return $statement->fetchAll();
 }
 
-function return_without_second($sqlDate)
+function return_only_date($sqlDate)
 {
     //sqlDate in SQL DATETIME format ("yyyy-mm-dd hh:mm:ss.ms")
     $sqlDateArr1 =  explode("-", $sqlDate);
@@ -681,9 +714,11 @@ function return_without_second($sqlDate)
     $hour = $sqlDateArr3[0];
     $minute = $sqlDateArr3[1];
 
-    $finalFormat = $year.'-'.$month.'-'.$day.' '.$hour.':'.$minute;
+    // $finalFormat = $year.'-'.$month.'-'.$day.' '.$hour.':'.$minute;
+    $dateFormat = $year.'-'.$month.'-'.$day;
 
-    return $finalFormat;
+    // return array($finalFormat, $dateFormat);
+    return $dateFormat;
 }
 
 

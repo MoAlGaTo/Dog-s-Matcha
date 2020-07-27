@@ -24,6 +24,7 @@ function get_chat_messages() {
                 let imageMessageDiv = document.createElement('img');
                 imageMessageDiv.setAttribute('src', userPhoto.href);
                 imageMessageDiv.setAttribute('alt', 'Avatar');
+                imageMessageDiv.setAttribute('style', 'height: 60px;');
 
                 let paragraphMessageDiv = document.createElement('p');
                 paragraphMessageDiv.innerHTML = result[0][3];
@@ -49,6 +50,7 @@ function get_chat_messages() {
                 imageMessageDiv.setAttribute('src', matchedPhoto.src);
                 imageMessageDiv.setAttribute('alt', 'Avatar');
                 imageMessageDiv.setAttribute('class', 'right');
+                imageMessageDiv.setAttribute('style', 'height: 60px;');
 
                 let paragraphMessageDiv = document.createElement('p');
                 paragraphMessageDiv.innerHTML = result[0][3];

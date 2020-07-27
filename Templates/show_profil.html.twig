@@ -34,6 +34,7 @@
                 <p style="color: darkred;">{{ profil.dog_name ~ ' ne vous a pas encore liké.' }}</p>
             {% endif %}
 
+            <p><span class="titlle-pre">Race:</span>{{ ' ' ~ breed }}</p>
             
             <p><span class="titlle-pre">Sexe:</span> {% if profil.gender == 'male' %}
                 Mâle
@@ -41,14 +42,16 @@
                 Femelle
                 {% endif %}</p>
                 
+                
                 <p><span class="titlle-pre">Age:</span>{% if profil.age >= 12 %}{% if profil.age == 12 %}{{ ' 1 an' }}{% else %}{{ ' ' ~ profil.age // 12 ~ ' ans' }}{% endif %}{% else %}{{ ' ' ~ profil.age ~ ' mois' }}{% endif %}</p>
+
                 
                 <p><span class="titlle-pre">Recherche:</span> {% if profil.orientation == 'other_breed' %}
                     Une autre race
                     {% elseif profil.orientation == 'same_breed' %}
-                La même race
-                {% else %}
-                Toutes les races
+                    La même race
+                    {% else %}
+                    Toutes les races
                 {% endif %}</p>
                 
                 <p><span class="titlle-pre">Ses caractéristiques:</span> {% for hashtag in hashtags %}

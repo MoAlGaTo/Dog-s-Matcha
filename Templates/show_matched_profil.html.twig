@@ -15,7 +15,8 @@
             <img src="Public/Images/cancel.png"><p>Hors ligne - dernière connexion le {{ profil.logout_date | date("d/m/Y") }}</p>
         {% endif %}
         <img src="{{ profil.profile_picture_path }}" width="300" id="matched-photo">
-        <h1 class="display-4" style="margin-top: 10px;">{{ profil.firstname ~ ' ' ~ profil.lastname }}</h1>
+        {# <h1 class="display-4" style="margin-top: 10px;">{{ profil.firstname ~ ' ' ~ profil.lastname }}</h1> #}
+        <h1 class="display-4" style="margin-top: 10px;">{{ profil.dog_name }}</h1>
 
 
         <div class="d-flex justify-content-center mb-3">
@@ -30,36 +31,41 @@
         </div>
 
         {% if did_like_me %}
-            <p style="color: green;">{{ profil.username ~ ' vous a liké.' }}</p>
+            <p style="color: green;">{{ profil.dog_name ~ ' vous a liké.' }}</p>
         {% else %}
-            <p style="color: darkred;">{{ profil.username ~ ' ne vous a pas encore liké.' }}</p>
+            <p style="color: darkred;">{{ profil.dog_name ~ ' ne vous a pas encore liké.' }}</p>
         {% endif %}
 
-        <p><span class="titlle-pre">Nom d'utilisateur:</span> {{ profil.username }}</p>
+
+        <p><span class="titlle-pre">Race:</span>{{ ' ' ~ breed }}</p>
 
         <p><span class="titlle-pre">Sexe:</span> {% if profil.gender == 'male' %}
-            Homme
+            Mâle
             {% else %}
-            Femme
+            Femelle
+        {% endif %}</p>
+        
+
+        <p><span class="titlle-pre">Age:</span>{% if profil.age >= 12 %}{% if profil.age == 12 %}{{ ' 1 an' }}{% else %}{{ ' ' ~ profil.age // 12 ~ ' ans' }}{% endif %}{% else %}{{ ' ' ~ profil.age ~ ' mois' }}{% endif %}</p>
+
+
+        <p><span class="titlle-pre">Recherche:</span> {% if profil.orientation == 'other_breed' %}
+            Une autre race
+            {% elseif profil.orientation == 'same_breed' %}
+            La même race
+            {% else %}
+            Toutes les races
         {% endif %}</p>
 
-        <p><span class="titlle-pre">Age:</span> {{ profil.age }}</p>
-
-        <p><span class="titlle-pre">Orientation sexuelle:</span> {% if profil.orientation == 'heterosexual' %}
-            Hétérosexuel
-            {% elseif profil.orientation == 'homosexual' %}
-            Homosexuel
-            {% else %}
-            Bisexuel
-        {% endif %}</p>
-
-        <p><span class="titlle-pre">Centres d'intérêt:</span> {% for hashtag in hashtags %}
+        <p><span class="titlle-pre">Ses caractéristiques:</span> {% for hashtag in hashtags %}
             {{ '#' ~ hashtag.tag ~ ' ' }}
         {% endfor %}.</p>
 
         <p><span class="titlle-pre">Localisation:</span> {{ profil.city ~ ' - ' ~ profil.zipcode  ~ ', France.' }}</p>
         
         <p><span class="titlle-pre">Présentation:</span> {{ profil.biography ~ '.' }}</p>
+
+        <p><span class="titlle-pre">Nom d'utilisateur du maître:</span> {{ profil.username }}</p>
 
         <hr class="my-4">
         
@@ -81,7 +87,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p class="black_font">Êtes-vous sur de vouloir signaler {{ profil.username }} ?</p>
+                        <p class="black_font">Êtes-vous sur de vouloir signaler {{ profil.dog_name }} ?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -97,7 +103,7 @@
 
 
 
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Bloquer {{ profil.username }}</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Bloquer {{ profil.dog_name }}</button>
         <small class="form-text alert-small-message text-center mt-3">Attention ! Une fois un utilisateur bloqué, vous ne pourrez plus le débloquer ni même avoir accès à son profil.</small>
 
 
@@ -111,7 +117,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p class="black_font">Êtes-vous sur de vouloir bloquer {{ profil.username }} ?</p>
+                        <p class="black_font">Êtes-vous sur de vouloir bloquer {{ profil.dog_name }} ?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -131,13 +137,13 @@
             {% for message in all_chat_messages %}
                 {% if message.id_sender == id_user %}
                     <div class="tchat">
-                        <img src="{{ photo_user_path }}" alt="Avatar">
+                        <img src="{{ photo_user_path }}" alt="Avatar" style="height: 60px;">
                         <p>{{ message.message|raw }}</p>
                         <span class="time-right">le {{ message.message_date | date("d/m/Y à H:i.") }}</span>
                     </div>
                 {% else %}
                      <div class="tchat darker">
-                        <img src="{{ profil.profile_picture_path }}" alt="Avatar" class="right">
+                        <img src="{{ profil.profile_picture_path }}" alt="Avatar" class="right" style="height: 60px;">
                         <p>{{ message.message|raw }}</p>
                         <span class="time-left">le {{ message.message_date | date("d/m/Y à H:i.") }}</span>
                     </div>
