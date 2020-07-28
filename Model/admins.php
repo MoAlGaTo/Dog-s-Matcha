@@ -387,14 +387,14 @@ function block_user($id_blocker, $id_blocked)
 }
 
 
-function update_information_user($id_user, $lastname, $firstname, $username, $email, $picture, $gender, $orientation, $age, $address, $city, $country, $zipcode, $biography, $latitude, $longitude)
+function update_information_user($id_user, $lastname, $firstname, $username, $email, $picture, $gender, $orientation, $dog_name, $age, $breed, $address, $city, $country, $zipcode, $biography, $latitude, $longitude)
 {
     $bdd = db_connection();
 
-    $req = $bdd->prepare("UPDATE users SET 	lastname = ?, firstname = ?, username = ?, email = ?, 	profile_picture_path = ?, gender = ?, orientation = ?, age = ?, address = ?, city = ?, country = ?, zipcode = ?, biography = ?, latitude = ?, longitude = ? WHERE id_user  = ?");
+    $req = $bdd->prepare("UPDATE users SET 	lastname = ?, firstname = ?, username = ?, email = ?, 	profile_picture_path = ?, gender = ?, orientation = ?, dog_name = ?, age = ?, breed = ?, address = ?, city = ?, country = ?, zipcode = ?, biography = ?, latitude = ?, longitude = ? WHERE id_user  = ?");
     try 
     {
-        $req->execute(array($lastname, $firstname, $username, $email, $picture, $gender, $orientation, $age, $address, $city, $country, $zipcode, $biography, $latitude, $longitude, $id_user));
+        $req->execute(array($lastname, $firstname, $username, $email, $picture, $gender, $orientation, $dog_name, $age, $breed, $address, $city, $country, $zipcode, $biography, $latitude, $longitude, $id_user));
 
         $result = $req->rowCount();
         return $result;
@@ -534,43 +534,43 @@ function add_notification($id_notificater, $id_notificated, $notification, $stat
 
     if (!$statement->rowCount())
     {
+
+        if (preg_match('/a visité votre profil/', $notification))
+        {
+            $statement = $bdd->prepare("SELECT * FROM notifications WHERE id_notificater = :id_notificater  AND id_notificated = :id_notificated AND notification REGEXP('a visité votre profil') ORDER BY id_notification DESC");
+            $statement->bindValue(':id_notificater', $id_notificater, PDO::PARAM_INT);
+            $statement->bindValue(':id_notificated', $id_notificated, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            if ($result && return_only_date($result[0]['notification_date']) === date('Y-m-d'))
+                return true;
+        }
+        elseif (preg_match('/a envoyé un message/', $notification))
+        {
+            usleep(600000);
+            $statement = $bdd->prepare("SELECT * FROM messages WHERE id_sender = :id_notificater  AND id_sended = :id_notificated ORDER BY id_message DESC");
+            $statement->bindValue(':id_notificater', $id_notificater, PDO::PARAM_INT);
+            $statement->bindValue(':id_notificated', $id_notificated, PDO::PARAM_INT);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $statement = $bdd->prepare("SELECT * FROM notifications WHERE id_notificater = :id_notificater  AND id_notificated = :id_notificated AND notification REGEXP('a envoyé un message') ORDER BY id_notification DESC");
+            $statement->bindValue(':id_notificater', $id_notificater, PDO::PARAM_INT);
+            $statement->bindValue(':id_notificated', $id_notificated, PDO::PARAM_INT);
+            $statement->execute();
+            $result2 = $statement->fetchAll();
+
+            if ($result && ($result[0]['status'] == 1 || ($result[0]['status'] == 0 && $result2 && $result2[0]['status'] == 0)))
+                return true;
+        }
+        
         $statement = $bdd->prepare("INSERT INTO notifications (id_notificater, id_notificated, notification, status) VALUES (:id_notificater, :id_notificated, :notification, :status)");
         $statement->bindValue(':id_notificater', $id_notificater, PDO::PARAM_INT);
         $statement->bindValue(':id_notificated', $id_notificated, PDO::PARAM_INT);
         $statement->bindValue(':notification', $notification, PDO::PARAM_STR);
         $statement->bindValue(':status', $status, PDO::PARAM_INT);
         $statement->execute();
-
-        if ($statement->rowCount())
-        {
-            $statement = $bdd->prepare("SELECT * FROM notifications WHERE id_notificater = :id_notificater  AND id_notificated = :id_notificated AND notification ~* '%a visité votre profil' ORDER BY id_notification DESC");
-            $statement->bindValue(':id_notificater', $id_notificater, PDO::PARAM_INT);
-            $statement->bindValue(':id_notificated', $id_notificated, PDO::PARAM_INT);
-            $statement->execute();
-            $result = $statement->fetchAll();
-
-            if (isset($result[0]) && return_only_date($result[0]['notification_date']) === date('y-m-j'))
-                remove_duplicate_notifications($result[0]['id_notification']);
-        }
-        // $notifications = get_all_notifications($id_notificated);
-
-        // $model = "/a visité votre profil/";
-        // $size = sizeof($notifications);
-        
-        
-        // for ($i = 0; $i < $size; $i++)
-        // {
-        //     if ($notifications[$i + 1]['notification'] &&
-        //         preg_match($model, $notifications[$i]['notification']) &&
-        //         preg_match($model, $notifications[$i + 1]['notification']) &&
-        //         $notifications[$i]['id_notificater'] === $notifications[$i + 1]['id_notificater'] &&
-        //         return_only_date($notifications[$i]['notification_date']) === return_only_date($notifications[$i + 1]['notification_date'])
-        //     )
-        //     {
-        //         remove_duplicate_notifications($notifications[$i]['id_notification']);
-        //     }
-        // }
-
 
         return $statement->rowCount();
     }
@@ -642,17 +642,6 @@ function get_current_notifications($id_notificated)
     return $result;
 }
 
-
-function remove_duplicate_notifications($id_notification)
-{
-    $bdd = db_connection();
-
-    $statement = $bdd->prepare("DELETE FROM notifications WHERE id_notification = :id_notification");
-    $statement->bindValue(':id_notification', $id_notification, PDO::PARAM_INT);
-    
-    $statement->execute();
-    return $statement->rowCount();
-}
 
 
 function add_match($id_matcher, $id_matched)
@@ -768,7 +757,6 @@ function get_current_chat_messages($id_sender, $id_sended)
 
     if ($req->rowCount())
     {
-
         set_messages_readed($id_sender, $id_sended);
     }
 

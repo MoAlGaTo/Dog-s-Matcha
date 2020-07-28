@@ -352,20 +352,6 @@ if ($page === 'home' || $page == null) {
 
 } else if ($page === 'notifications') {
 
-    // $notifications = get_all_notifications($_SESSION['id_user']);
-    
-
-    // $model = "/a visité votre profil/";
-    // $size = sizeof($notifications);
-    
-    
-    // for ($i = 0; $i < $size - 1; $i++)
-    // {
-    //     if (preg_match($model, $notifications[$i]['notification']) && preg_match($model, $notifications[$i + 1]['notification']) && return_only_date($notifications[$i]['notification_date']) === return_only_date($notifications[$i + 1]['notification_date']))
-    //     {
-    //         remove_duplicate_notifications($notifications[$i]['id_notification']);
-    //     }
-    // }
     
     $notifications = get_all_notifications($_SESSION['id_user']);
     set_notifications_readed($_SESSION['id_user']);

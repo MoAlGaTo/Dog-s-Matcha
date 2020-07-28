@@ -282,7 +282,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 }
 
 
-                if (update_information_user($_SESSION['id_user'], $lastname, $firstname, $username, $email, $picture_destination, $gender, $orientation, $age, $address, $city, $state, $zip, $presentation, $latitude, $longitude))
+                if (update_information_user($_SESSION['id_user'], $lastname, $firstname, $username, $email, $picture_destination, $gender, $orientation, $dog_name, $age, $breed, $address, $city, $state, $zip, $presentation, $latitude, $longitude))
                 {
                     if (delete_user_tags($_SESSION['id_user']))
                     {
