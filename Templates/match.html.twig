@@ -13,7 +13,7 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="{{ matched_profil.profile_picture_path }}" style="height: 300px;">
                     <div class="card-body text-center">
-                        <h5 class="card-title">{{ matched_profil.firstname ~ ' ' ~ matched_profil.lastname }}</h5>
+                        <h5 class="card-title">{{ matched_profil.dog_name }}</h5>
                         <p class="card-text">{{ matched_profil.biography|length > 50 ? matched_profil.biography|slice(0, 50) ~ '...' : myentity.text  }}</p>
                         <a href="online.php?page=show_matched_profil&id={{ matched_profil.id_user }}" class="btn btn-primary ">Voir le profil</a>
                     </div>
