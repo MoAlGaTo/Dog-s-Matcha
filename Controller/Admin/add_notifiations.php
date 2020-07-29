@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $typeof_notifications = array(
         0 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a liké',
         1 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> a visité votre profil',
-        2 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a envoyé un message',
-        3 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a aussi liké, vous avez matché et vous pouvez désormais chatter ensemble - ',
+        2 => '<a href="online.php?page=show_matched_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a envoyé un message',
+        3 => '<a href="online.php?page=show_matched_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> vous a aussi liké, vous avez matché et vous pouvez désormais chatter ensemble - ',
         4 => '<a href="online.php?page=show_profil&id='.$id_notificater.'">'.$_SESSION['dog_name'].'</a> ne vous like plus, vous ne pouvais plus chatter ensemble - '
     );
 
