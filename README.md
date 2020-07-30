@@ -38,12 +38,11 @@ A script (faker_seeds.php) provides a "seed" hydrating the database with a set o
 >- PHP for the back-end
 >- HTML, CSS, Bootstrap, Javascript for the front-end, as well as Twig for template engine.
 >- Javascript for chat and real-time notification.
-
+<br/><br/>
 ***
-<br/><br/><br/><br/>
+<br/><br/><br/>
 
 <img src="Public/Images/github-pictures/france.png" width="10" height="15"/> L’application permet à un utilisateur de s’inscrire, et une fois l’inscription validée, un e-mail de confirmation comportant un lien unique est envoyé sur l’adresse e-mail renseignée afin de valider son inscription.  Il peut recevoir un mail de réinitialisation de son mot de passe en cas d’oubli.
-<hr/>
 
 
 <img src="Public/Images/github-pictures/united-states.png" width="10" height="15"/> The application allows a user to register, and once the registration has been validated, a confirmation e-mail with a unique link is sent to the e-mail address provided in order to validate the registration.  The user can receive an email to reset his password in case he has forgotten it.
