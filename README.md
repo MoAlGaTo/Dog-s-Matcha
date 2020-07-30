@@ -1,7 +1,11 @@
 # Dog's Matcha
+<br/>
+![](/Public/Images/github-pictures/france.png =24x48) 
 
-### Français:
+<br/>
+### Français :
 
+<img src="Public/Images/github-pictures/france.png" style="width: 15px !important;"/>
 
 
 **Dog's Matcha** est un projet qui a pour but de concevoir une application de site de rencontres pour chiens. 
@@ -20,22 +24,35 @@ Un script (faker_seeds.php) fournit une "seed" hydratant la base de données ave
 
 L’application permet à un utilisateur de s’inscrire, et une fois l’inscription validée, un e-mail de confirmation comportant un lien unique est envoyé sur l’adresse e-mail renseignée afin de valider son inscription.  Il peut recevoir un mail de réinitialisation de son mot de passe en cas d’oubli.
 
+![Accueil - Home](/Public/Images/github-pictures/registration.png)
+***
+
+![Accueil - Home](/Public/Images/github-pictures/connection.png)
+***
+
+![Accueil - Home](/Public/Images/github-pictures/password-forgotten.png)
+***
+
 Une fois inscrit et connecté, l'utilisateur est invité à compléter le profil de son chien, en rajoutant des informations telles qu'une photo de profil, son nom, que son âge, sa race, son adresse (afin d'être géolocalisé via une API), ses caractéristiques (illustrés par des hashtags), etc...
+
+![Accueil - Home](/Public/Images/github-pictures/complete-info.png)
+***
+
+![Accueil - Home](/Public/Images/github-pictures/complete-info2.png)
+***
 
 Une fois connecté, l'utilisateur se voit proposer via un algorithme une liste de suggestions de profils qui lui correspondent, du match total au match plus ou moins partiel.
 
 la liste des suggestions est triable par âge (ordre croissant), localisation (du plus proche géographiquement au moins proche), popularité (du plus liké au moins liké) et tags en commun (du plus correspondant au moins correspondant). 
 
-Elle est aussi filtrable par intervalle d’âge, localisation (ville en particulier), intervalle de popularité et par un tag en particulier.
-L’utilisateur peut effectuer une recherche avancée en sélectionnant un ou plusieurs critères tels que :
+L’utilisateur peut effectuer une recherche avancée en sélectionnant un ou plusieurs critères tels qu'un intervalle d’âge, une race en particulier, une localisation particulière (la ville), un intervalle de popularité et par un tag en particulier.
+Tout comme la liste de suggestion, la recherche avancée est triable par âge, localisation, popularité et par tags.
 
->- Un intervalle d’âge.
->- Une race.
->- Un intervalle de score de popularité (illustré par les likes).
->- La localisation (ville en particulier).
->- Un tag en particulier.
+![Accueil - Home](/Public/Images/github-pictures/home.png)
+***
 
-Tout comme la liste de suggestion, la liste de résultats est triable et filtrable par âge, localisation, popularité et par tags.
+![Accueil - Home](/Public/Images/github-pictures/home-research.png)
+***
 
 Un utilisateur peut consulter le profil des autres utilisateurs, et peut également :
 
@@ -44,10 +61,25 @@ Un utilisateur peut consulter le profil des autres utilisateurs, et peut égalem
 >- Consulter le score de popularité (nombre de likes).
 >- Voir si l’utilisateur est en ligne, et si ce n’est pas le cas, afficher la date de sa dernière visite.
 >- Reporter l’utilisateur comme étant un "faux compte".
->- Bloquer l’utilisateur. Un utilisateur bloqué n'apparaît ensuite plus dans les résultats de recherche, et ne génère plus de notifications. 
+>- Bloquer l’utilisateur. Un utilisateur bloqué n'apparaît ensuite plus dans les résultats de recherche, et ne génère plus de notifications.
+
+![Accueil - Home](/Public/Images/github-pictures/profile-show.png)
+***
+
+![Accueil - Home](/Public/Images/github-pictures/block.png)
+***
+
 
 Si les deux uilisateurs se sont mutuellement likés, ils sont considérés comme avoir "matché" et peuvent ainsi échanger via un chat en temps réel.
 Si l'un des deux "unlike" l'autre, ou le bloque, ils ne matchent plus.
+
+![Accueil - Home](/Public/Images/github-pictures/match.png)
+***
+
+![Accueil - Home](/Public/Images/github-pictures/profile-show-match.png)
+***
+
+
 
 Un utilisateur est notifié, en temps réel des évènements suivants :
 
@@ -59,6 +91,17 @@ Un utilisateur est notifié, en temps réel des évènements suivants :
 
 L’utilisateur peut voir, de n’importe quelle page, qu’une notification n’a pas été lue.
 
+![Accueil - Home](/Public/Images/github-pictures/notification.png)
+***
+
 Quand un utilisateur regarde un profil, il apparaît dans l’historique des visites de ce dernier.
+![Accueil - Home](/Public/Images/github-pictures/historical.png)
+***
+
+À tout moment, l’utilisateur peut consulter et modifier ses informations et son mot de passe, ainsi que les informations concernant son chien.
+![Accueil - Home](/Public/Images/github-pictures/profile.png)
+***
 
 Tout le site est responsive.
+![Accueil - Home](/Public/Images/github-pictures/responsive.png)
+***
