@@ -21,9 +21,9 @@ Un script (faker_seeds.php) fournit une "seed" hydratant la base de données ave
 >- HTML, CSS, Bootstrap, Javascript pour le front-end, ainsi que Twig pour moteur de template.
 >- Javascript pour le chat et notification en temps réel.
 
+<br/><br/>
 
-
-<img src="Public/Images/github-pictures/united-states.png" width="10" height="15"/> ### English :
+### English <img src="Public/Images/github-pictures/united-states.png" width="10" height="15"/>:
 
 **Dog's Matcha** is a project that aims to design a dating site application for dogs. 
 
@@ -40,7 +40,7 @@ A script (faker_seeds.php) provides a "seed" hydrating the database with a set o
 >- Javascript for chat and real-time notification.
 
 ***
-
+<br/><br/><br/><br/>
 
 <img src="Public/Images/github-pictures/france.png" width="10" height="15"/> L’application permet à un utilisateur de s’inscrire, et une fois l’inscription validée, un e-mail de confirmation comportant un lien unique est envoyé sur l’adresse e-mail renseignée afin de valider son inscription.  Il peut recevoir un mail de réinitialisation de son mot de passe en cas d’oubli.
 <hr/>
@@ -172,5 +172,6 @@ The user can see, from any page, that a notification has not been read.
 
 
 <img src="Public/Images/github-pictures/united-states.png" width="10" height="15"/> The whole site is responsive.
+
 ![Accueil - Home](/Public/Images/github-pictures/responsive.png)
 ***
