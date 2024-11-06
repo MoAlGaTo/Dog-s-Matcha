@@ -1,6 +1,6 @@
 {
     "require": {
-        "twig/twig": "^2.12",
+        "twig/twig": "^3.11",
         "fzaninotto/faker": "^1.9"
     }
 }
